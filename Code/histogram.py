@@ -30,3 +30,5 @@ def frequency(word, histogram):
 
 
 if __name__ == '__main__':
+  histogram = histogram_dict('code/sherlock.txt')
+  print(histogram)
