@@ -1,4 +1,4 @@
-def histogram(source_text):
+def histogram_dict(source_text):
   with open(source_text) as f:
     words = f.read().lower()
     words = [word.rstrip() for word in words]
