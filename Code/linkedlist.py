@@ -75,8 +75,7 @@ class LinkedList:
         if self.is_empty() == True:
             self.head = new_node
             self.tail = new_node
-        else: 
-            self.append(item)
+        self.append(item)
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
