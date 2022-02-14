@@ -54,6 +54,14 @@ class LinkedList:
         """Return the length of this linked list by traversing its nodes.
         TODO: Running time: O(n) Why and under what conditions?"""
         # TODO: Loop through all nodes and count one for each
+        temp = self.head # Initialise temp
+        count = 0 # Initialise count
+ 
+        # Loop while end of linked list is not reached
+        while (temp):
+            count += 1
+            temp = temp.next
+        return count
 
 
     def append(self, item):
@@ -63,6 +71,12 @@ class LinkedList:
         # TODO: If self.is_empty() == True set the head and the tail to the new node
         # TODO: Else append node after tail
 
+        new_node = Node(item)
+        if self.is_empty() == True:
+            self.head = new_node
+            self.tail = new_node
+        else: 
+            self.append(item)
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list.
@@ -70,11 +84,23 @@ class LinkedList:
         # TODO: Create new node to hold given item
         # TODO: Prepend node before head, if it exists
 
+        new_node = Node(item)
+        new_node.next = self.head
+        self.head = new_node
+
     def find(self, item):
         """Return an item from this linked list if it is present.
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item, if present return True otherwise False
+        if self == None:
+            return False
+        while self is not None:
+            if self.item == item:
+                return True
+            else: 
+                return False
+            
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
@@ -84,6 +110,33 @@ class LinkedList:
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
+
+        # make temp value to store the head node 
+        temp = self.head
+ 
+        # if head node itself is the item to be deleted
+        if (temp is not None):
+            if (temp.data == item):
+                self.head = temp.next
+                temp = None
+                return
+ 
+        # search for the item to be deleted, keep track of the
+            # previous node as we need to change 'prev.next'
+        while(temp is not None):
+            if temp.data == item:
+                break
+            prev = temp
+            temp = temp.next
+ 
+        # if item was not present in linked list
+        if(temp == None):
+            return ValueError('Item not found: {}'.format(item))
+ 
+        # unlink the node from linked list
+        prev.next = temp.next
+ 
+        temp = None
 
 if __name__ == "__main__":
     my_ll = LinkedList(["A", "B", "C"])

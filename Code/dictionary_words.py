@@ -10,7 +10,6 @@ def rand_sent(length):
       sentence += str(i) + ' '
     print(sentence)
 
-
 if __name__ == '__main__':
   length = int(sys.argv[1])
   rand_sent(length)

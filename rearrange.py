@@ -1,14 +1,10 @@
-import random, sys
-
-input_str = sys.argv[1:]
+import random
 
 def rearrange(str):
   rand_list = str.split(' ')
   random.shuffle(rand_list)
-  output = ''
-  for i in len(rand_list):
-    output += str(i) + ' '
-  return output
+  return rand_list
 
 if __name__ == '__main__':
-  print(rearrange(str(input_str)))
+  rearranged = rearrange(input())
+  print(' '.join(rearranged))
