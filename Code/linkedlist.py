@@ -98,13 +98,10 @@ class LinkedList:
         TODO: Best case running time: O(???) Why and under what conditions?
         TODO: Worst case running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all nodes to find item, if present return True otherwise False
-        if self == None:
-            return False
-        while self is not None:
-            if self.item == item:
+        for i in self.items():
+            if item == i:
                 return True
-            else: 
-                return False
+        return False
             
 
     def delete(self, item):
