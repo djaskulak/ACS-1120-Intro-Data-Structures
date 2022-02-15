@@ -85,7 +85,12 @@ class LinkedList:
         # TODO: Prepend node before head, if it exists
 
         new_node = Node(item)
-        new_node.next = self.head
+
+        if self.head is not None:
+            new_node.next = self.head
+        else:
+            self.tail = new_node
+
         self.head = new_node
 
     def find(self, item):
