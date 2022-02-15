@@ -114,31 +114,54 @@ class LinkedList:
         # Hint: raise ValueError('Item not found: {}'.format(item))
 
         # make temp value to store the head node 
-        temp = self.head
+        temp_node = self.head
+
+        # if there is nothing there
+        if temp_node is None:
+            raise ValueError('Item not found: {}'.format(item))
+        # checking if the first node is the item
+        elif temp_node == item:
+            # deleting the whole list if it is
+            if temp_node.next is None:
+                self.head = None
+                self.tail = None
+            # moving the temp node to the next node if it is not the item
+            else:
+                self.head = temp_node.next
+        else:
+            # looping through the list until there is an empty node
+            while temp_node is not None:
+                next_node = temp_node.text
+                if next_node == item:
+                    temp_node.next = temp_node.next.next
+                    return
+                else:
+                    temp_node = temp_node.next
+            
  
-        # if head node itself is the item to be deleted
-        if (temp is not None):
-            if (temp.data == item):
-                self.head = temp.next
-                temp = None
-                return
+        # # if head node itself is the item to be deleted
+        # if (temp is not None):
+        #     if (temp.data == item):
+        #         self.head = temp.next
+        #         temp = None
+        #         return
  
-        # search for the item to be deleted, keep track of the
-            # previous node as we need to change 'prev.next'
-        while(temp is not None):
-            if temp.data == item:
-                break
-            prev = temp
-            temp = temp.next
+        # # search for the item to be deleted, keep track of the
+        #     # previous node as we need to change 'prev.next'
+        # while(temp is not None):
+        #     if temp.data == item:
+        #         break
+        #     prev = temp
+        #     temp = temp.next
  
-        # if item was not present in linked list
-        if(temp == None):
-            return ValueError('Item not found: {}'.format(item))
+        # # if item was not present in linked list
+        # if(temp == None):
+        #     return ValueError('Item not found: {}'.format(item))
  
-        # unlink the node from linked list
-        prev.next = temp.next
+        # # unlink the node from linked list
+        # prev.next = temp.next
  
-        temp = None
+        # temp = None
 
 if __name__ == "__main__":
     my_ll = LinkedList(["A", "B", "C"])
