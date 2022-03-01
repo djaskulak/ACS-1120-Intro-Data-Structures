@@ -1,5 +1,4 @@
 import requests
-import sys
 
 #------------------------------------------------------------------------
 
@@ -18,14 +17,14 @@ def get_lyrics(url):
     'discussion': 'false'
   }
 
-  request = requests.get(DIFFBOT_API_URL, params)
-  obj = request.json()['objects'][0]
+  response = requests.get(DIFFBOT_API_URL, params)
+  obj = response.json()['objects'][0]
   file = obj['text']
 
   return file
 
 def create_corpus(file):
-  output_file = open('./data/sample.txt', 'w')
+  output_file = open('data/corpus.txt', 'w')
 
   corpus = ''
 
@@ -40,8 +39,7 @@ def create_corpus(file):
 #------------------------------------------------------------------------
 
 if __name__ == '__main__':
-  input_file = open(sys.argv[1])
+  input_file = open('data/pages.txt')
 
   text_file = get_lyrics(input_file)
   create_corpus(text_file)
-  
