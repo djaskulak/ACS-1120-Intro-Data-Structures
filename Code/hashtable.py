@@ -67,12 +67,10 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Loop through all buckets
         # TODO: Count number of key-value entries in each bucket
-        all_items = []
-
+        count = 0
         for bucket in self.buckets:
-            all_items.extend(bucket.items())
-
-        return all_items
+            count += bucket.length()
+        return count
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
@@ -133,7 +131,7 @@ class HashTable(object):
         index = self._bucket_index(key)
         bucket = self.buckets[index]
         entry = bucket.find_if_matches(lambda entry: entry[0] == key)
-        
+
         if entry is not None:
             bucket.delete(entry)
         else:
