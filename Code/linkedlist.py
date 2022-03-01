@@ -102,6 +102,14 @@ class LinkedList:
             if item == i:
                 return True
         return False
+
+    def find_if_matches(self, matching_function):
+        node = self.head
+        while node:
+            if matching_function(node.data):
+                return node.data
+            node = node.next
+        return None
             
 
     def delete(self, item):
