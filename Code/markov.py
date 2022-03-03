@@ -51,5 +51,5 @@ class Markov(Dictogram):
     return sentence_str
 
 if __name__ == '__main__':
-  chain = Markov(cleanup('./data/corpus.txt'))
+  chain = Markov(cleanup('./corpus.txt'))
   print(chain.walk_chain())

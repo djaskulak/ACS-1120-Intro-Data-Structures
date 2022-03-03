@@ -13,7 +13,7 @@ class Markov(Dictogram):
   def create_chain(self, order):
     index = order
 
-    while (index+2) < (len(self.word_list) - order):
+    while (index) < (len(self.word_list) - order):
       w1 = self.word_list[index]
       w2 = self.word_list[index + 1]
       w3 = self.word_list[index + 2]
@@ -54,4 +54,4 @@ class Markov(Dictogram):
 
 if __name__ == '__main__':
   chain = Markov(cleanup('./corpus.txt'), 2)
-  print(chain.walk_chain(), 2)
+  print(chain.walk_chain())
