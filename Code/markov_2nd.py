@@ -1,17 +1,19 @@
 from dictogram import Dictogram
 from cleanup import cleanup
+from tokens import tokenize
 import random
 
 class Markov(Dictogram):
-  def __init__(self, word_list):
+  def __init__(self, word_list, order):
     super(Markov, self).__init__()
     self.word_list = word_list
     self.dict = {}
+    self.n_markov_dict = self.create_chain(order)
   
-  def create_chain(self):
-    index = 0
+  def create_chain(self, order):
+    index = order
 
-    while (index+2) < (len(self.word_list)):
+    while (index+2) < (len(self.word_list) - order):
       w1 = self.word_list[index]
       w2 = self.word_list[index + 1]
       w3 = self.word_list[index + 2]
@@ -51,5 +53,5 @@ class Markov(Dictogram):
     return sentence_str
 
 if __name__ == '__main__':
-  chain = Markov(cleanup('./data/corpus.txt'))
-  print(chain.walk_chain())
+  chain = Markov(cleanup('./corpus.txt'), 2)
+  print(chain.walk_chain(), 2)
