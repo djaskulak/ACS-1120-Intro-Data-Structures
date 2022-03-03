@@ -1,5 +1,8 @@
 """Main script, uses other modules to generate sentences."""
 from flask import Flask
+from histogram import histogram
+from dictogram import Dictogram
+from cleanup import cleanup
 
 
 app = Flask(__name__)
@@ -9,12 +12,16 @@ app = Flask(__name__)
 def before_first_request():
     """Runs only once at Flask startup"""
     # TODO: Initialize your histogram, hash table, or markov chain here.
+    word_list = cleanup('Code.corpus.txt')
+    histogram = Dictogram(word_list)
+    return histogram
 
 
 @app.route("/")
 def home():
     """Route that returns a web page containing the generated text."""
-    return "<p>TODO: Return a word here!</p>"
+    tokens = histogram('Code/corpus.txt')
+    return tokens
 
 
 if __name__ == "__main__":
