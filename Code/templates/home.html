@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Doja Cat Lyric Generator</h1>
+
+    <div>
+      <blockquote>{{ sentence }}</blockquote>
+    </div>
+    <p>
+
+    </p>
+    <!-- Tweet it! -->
+    <form action="/tweet" method="post">
+      <input type="hidden" name="sentence" value="{{ sentence }}">
+      <button type="submit">Tweet this</button>
+    </form>
+{% endblock %}
