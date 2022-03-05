@@ -1,5 +1,6 @@
 body {
   background-image: url("../images/doja_background.png");
+  background-size: cover;
   font-family: 'Roboto Mono', monospace;
 }
 
